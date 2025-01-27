@@ -1,11 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Document</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Job & Process Scheduling CPU - Pizz Pizz - 4AI</title>
+		<link href="styles.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
-		lmfao
+		<script src="script.js"></script>
+		<div>
+			<h1>Scheduling Simulator</h1>
+		</div>
+		<div>
+			<h3>Inserisci Processo</h3>
+			<label>Nome:</label><input type="text" id="processName" placeholder="P1"><br>
+			<label>Tempo Arrivo:</label><input type="number" id="arrivalTime" placeholder="0"><br>
+			<label>Tempo Burst:</label><input type="number" id="burstTime" placeholder="1"><br>
+			<button onclick="addProcess()">Aggiungi Processo</button>
+		</div>
+		<div>
+			<h3>Legenda Stati</h3>
+			<p><span style="background-color:white;">Bianco</span>: Pronto</p>
+			<p><span style="background-color:green;">Verde</span>: In esecuzione</p>
+			<p><span style="background-color:red;">Rosso</span>: Terminato</p>
+		</div>
+		<div>
+			<h3>Processo in esecuzione</h3>
+			<table class="styled-table" border="1" id="runningProcessTable">
+				<thead>
+					<tr>
+						<th>Process</th>
+						<th>Remaining Burst Time</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td id="runningProcessName">N/A</td>
+						<td id="runningProcessBurst">N/A</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div>
+			<h3>Seleziona Algoritmo di Scheduling</h3>
+			<select id="algorithmSelector">
+				<option value="FCFS">First Come First Serve (FCFS)</option>
+				<option value="SJF">Shortest Job First (SJF)</option>
+				<option value="SRTF">Shortest Remaining Time First (SRTF)</option>
+			</select>
+			<label>Cambio di contesto:</label><input type="number" id="contextSwitch" placeholder="0" value="0">
+		</div>
+		<div>
+			<table class="styled-table" border="1" id="idTable">
+				<thead>
+					<tr>
+						<th>Process</th>
+						<th>Arrival Time</th>
+						<th>Burst Time</th>
+						<th>Remaining Burst Time</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+		<div>
+			<button id="idReset" onclick="reset()">Reset</button>
+			<button id="idStart" onclick="start()">Start</button>
+			<button id="idStep" onclick="step()">Step</button>
+		</div>
+		<div>
+			<p id="idTime"></p>
+			<p id="idStatistics"></p>
+		</div>
 	</body>
 </html>
